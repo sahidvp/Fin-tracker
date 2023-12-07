@@ -18,7 +18,7 @@ List<IntroContent> contents = [
     image: "asset/image/intro2.jpeg",
     description:"Visualize your financial data like never before"
     " Track income and expenses with interactive charts for "
-   " better insights and smarter decisions",
+   " better insights and smarter decsions",
      title: 'Interactive charts',
   ),
   IntroContent(
