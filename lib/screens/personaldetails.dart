@@ -69,7 +69,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 530,
+                    height: 440,
                     color: Colors.white,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(

@@ -44,7 +44,7 @@ class DetailedTransaction extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: mycolor,
-          title: const Text('Transaction Details'),
+          title: const Text('Transaction Details',style: TextStyle(color: Colors.white),),
         ),
         body: Stack(
           children: [
@@ -68,7 +68,7 @@ class DetailedTransaction extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                   child: Column(
                     
                     children: [
@@ -221,10 +221,10 @@ class DetailedTransaction extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                                 color:Colors.black,
                           ),)
-
+                  
                         ],
                       )
-
+                  
                     ],
                   ),
                 ),

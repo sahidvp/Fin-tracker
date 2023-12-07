@@ -49,10 +49,10 @@ class _IntroScreenState extends State<IntroScreen> {
                       Image.asset(
                         contents[i].image,
                         height: 500,
-                        width: 500,
+                        width: 490,
                       ),
                       const SizedBox(
-                        height: 50,
+                        height: 35,
                       ),
                       Text(
                         contents[i].title,
@@ -67,12 +67,12 @@ class _IntroScreenState extends State<IntroScreen> {
                 );
               } else {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 30),
+                  padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
                   child: Column(
                     children: [
                       Image.asset(
                         contents[i].image,
-                        height: 300,
+                        height: 290,
                       ),
                       Text(
                         contents[i].title,

@@ -57,133 +57,135 @@ class ContainerStackExample extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: username.listenable(),
         builder: (context, value, child) {
-          return Column(children: [
-            Stack(
-              children: <Widget>[
-                Container(
-                  height: 290,
-                ),
-                ClipPath(
-                  clipper: BottomOvalClipper(),
-                  child: Container(
-                    width: double.infinity,
-                    height: 250,
-                    color: const Color.fromARGB(255, 18, 54, 52),
+          return SingleChildScrollView(
+            child: Column(children: [
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 290,
                   ),
-                ),
-                Positioned(
-                  left: 160,
-                  top: 180,
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 8, 94, 89),
-                        shape: BoxShape.circle),
-                    child: Image.asset('asset/image/user avatar.png'),
+                  ClipPath(
+                    clipper: BottomOvalClipper(),
+                    child: Container(
+                      width: double.infinity,
+                      height: 250,
+                      color: const Color.fromARGB(255, 18, 54, 52),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Text(
-              getusername(),
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 25,
-                color: Color.fromARGB(255, 18, 54, 52),
+                  Positioned(
+                    left: 160,
+                    top: 180,
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 8, 94, 89),
+                          shape: BoxShape.circle),
+                      child: Image.asset('asset/image/user avatar.png'),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Text(
-              getemail(),
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-                color: Color.fromARGB(255, 18, 54, 52),
-              ),
-            ),
-            const SizedBox(height: 50),
-            const Divider(),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return const PersonalDetails();
-                }));
-              },
-              child: const ListTile(
-                leading: Icon(
-                  Icons.people_alt_sharp,
-                  color: Color.fromARGB(255, 39, 97, 94),
-                  size: 28,
-                ),
-                title: Text(
-                  'Personal Details',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
+              Text(
+                getusername(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 25,
+                  color: Color.fromARGB(255, 18, 54, 52),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () {
-                shareApp();
-              },
-              child: const ListTile(
-                leading: Icon(
-                  Icons.share,
-                  color: Color.fromARGB(255, 39, 97, 94),
-                  size: 28,
+              Text(
+                getemail(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 18, 54, 52),
                 ),
-                title: Text(
-                  'Share application',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+              ),
+              const SizedBox(height: 50),
+              const Divider(),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                    return const PersonalDetails();
+                  }));
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.people_alt_sharp,
+                    color: Color.fromARGB(255, 39, 97, 94),
+                    size: 28,
+                  ),
+                  title: Text(
+                    'Personal Details',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return const Help();
-                }));
-              },
-              child: const ListTile(
-                leading: Icon(
-                  Icons.help,
-                  color: Color.fromARGB(255, 39, 97, 94),
-                  size: 28,
-                ),
-                title: Text(
-                  'Help',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+              InkWell(
+                onTap: () {
+                  shareApp();
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.share,
+                    color: Color.fromARGB(255, 39, 97, 94),
+                    size: 28,
+                  ),
+                  title: Text(
+                    'Share application',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () {
-                _showLogoutConfirmationDialog(context);
-              },
-              child: const ListTile(
-                leading: Icon(
-                  Icons.logout,
-                  color: Color.fromARGB(255, 39, 97, 94),
-                  size: 28,
-                ),
-                title: Text(
-                  'Log out',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                    return const Help();
+                  }));
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.help,
+                    color: Color.fromARGB(255, 39, 97, 94),
+                    size: 28,
+                  ),
+                  title: Text(
+                    'Help',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ]);
+              InkWell(
+                onTap: () {
+                  _showLogoutConfirmationDialog(context);
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: Color.fromARGB(255, 39, 97, 94),
+                    size: 28,
+                  ),
+                  title: Text(
+                    'Log out',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          );
         });
   }
 
