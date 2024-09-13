@@ -1,5 +1,3 @@
-
-
 // import 'package:finance_tracker/db/add_date.dart';
 // import 'package:finance_tracker/screens/addtrans/pages/addtransaction.dart';
 // import 'package:finance_tracker/screens/detailsoftransaction.dart';
@@ -173,7 +171,7 @@
 //                   color: Colors.white,
 //                   size: 30,
 //                 ),
-                
+
 //               ),
 //               secondaryBackground: Container(
 //                 alignment: Alignment.centerLeft,
@@ -183,11 +181,11 @@
 //                   color: Colors.white,
 //                   size: 30,
 //                 ),
-                
+
 //               ),
 //               onDismissed: (direction) {
 //                 if (direction == DismissDirection.endToStart) {
-                  
+
 //                   box.delete(transaction.key);
 //                 } else if (direction == DismissDirection.startToEnd) {
 //                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
@@ -334,9 +332,10 @@ class _TransactionPageState extends State<TransactionPage> {
           elevation: 0,
           centerTitle: true,
           backgroundColor: mycolor,
-          title: const Text('Transactions',style: TextStyle(
-            color: Colors.white
-          ),),
+          title: const Text(
+            'Transactions',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -353,10 +352,10 @@ class _TransactionPageState extends State<TransactionPage> {
                           height: 20,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 330,
+                              width: 300,
                               child: TextFormField(
                                 controller: _searchController,
                                 decoration: InputDecoration(
@@ -494,22 +493,20 @@ class _TransactionPageState extends State<TransactionPage> {
 
                   return isConfirmed;
                 } else {
-                  return  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (ctx) {
                     return AddTransaction(transaction: transaction);
-                  }));// Don't show alert for other dismiss directions
+                  })); // Don't show alert for other dismiss directions
                 }
               },
               onDismissed: (direction) {
                 if (direction == DismissDirection.endToStart) {
                   box.delete(transaction.key);
-                } else if (direction == DismissDirection.startToEnd) {
-
-                }
+                } else if (direction == DismissDirection.startToEnd) {}
               },
               child: ListTile(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (ctx) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                     return DetailedTransaction(transaction: transaction);
                   }));
                 },
@@ -543,14 +540,12 @@ class _TransactionPageState extends State<TransactionPage> {
   void _showFilterOptions() {
     showModalBottomSheet(
       context: context,
-     
       builder: (BuildContext context) {
         return Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            
             mainAxisSize: MainAxisSize.min,
             children: [
               const Text(
@@ -580,7 +575,7 @@ class _TransactionPageState extends State<TransactionPage> {
         setState(() {
           _filterOption = option;
         });
-        Navigator.pop(context); 
+        Navigator.pop(context);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),

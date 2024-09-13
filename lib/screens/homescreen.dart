@@ -51,6 +51,8 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
 
   @override
   Widget build(BuildContext context) {
+    final sh = MediaQuery.of(context).size.height;
+    final sw = MediaQuery.of(context).size.width;
     return ValueListenableBuilder(
         valueListenable: box.listenable(),
         builder: (context, value, child) {
@@ -71,11 +73,11 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
                       ),
                     ),
                     Positioned(
-                      left: 30,
+                      left: 20,
                       top: 150,
                       child: Container(
-                        width: 350,
-                        height: 200,
+                        width: sw * .9,
+                        height: sh * .5,
                         decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -90,7 +92,10 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10,),
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            right: 10,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -122,7 +127,10 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
                                         backgroundColor:
                                             Color.fromARGB(255, 18, 54, 52),
                                         radius: 12,
-                                        child: Icon(Icons.arrow_downward,color: Colors.white,),
+                                        child: Icon(
+                                          Icons.arrow_downward,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -138,7 +146,8 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
                                         backgroundColor:
                                             Color.fromARGB(255, 18, 54, 52),
                                         radius: 12,
-                                        child: Icon(Icons.arrow_upward,color: Colors.white),
+                                        child: Icon(Icons.arrow_upward,
+                                            color: Colors.white),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -244,7 +253,6 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
                     return getlist(history, index);
                   },
                   childCount: box.length,
-                 
                 ),
               ),
             ],
@@ -272,7 +280,8 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
       ),
       subtitle: Text(
         ' ${history.datetime.day} -${history.datetime.month}-${history.datetime.year}',
-        style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        style:
+            const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
       ),
       trailing: Text(
         '₹${history.amount}',

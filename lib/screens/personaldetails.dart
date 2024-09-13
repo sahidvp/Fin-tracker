@@ -25,7 +25,10 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: const Icon( Icons.arrow_back_ios,color: Colors.white,)),
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              )),
           backgroundColor: mycolor,
           title: const Text(
             'Personal Details',
@@ -53,7 +56,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                       ),
                       Positioned(
                         width: 100,
-                        left: 156,
+                        left: 130,
                         top: 100,
                         child: Container(
                           height: 95,
@@ -69,11 +72,12 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 440,
+                    // height: 440,
                     color: Colors.white,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const Text(
                             'Username',
@@ -131,7 +135,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                                     color: mycolor)),
                           ),
                           const SizedBox(
-                            height: 100,
+                            height: 50,
                           ),
                           ElevatedButton(
                             style: ButtonStyle(

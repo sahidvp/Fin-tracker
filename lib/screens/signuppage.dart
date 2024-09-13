@@ -29,6 +29,7 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    final sh = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -45,11 +46,11 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(
                 height: 30,
               ),
-              const Text(
+              Text(
                 'Sign up',
                 style: TextStyle(
                     color: Color.fromARGB(255, 18, 54, 52),
-                    fontSize: 50,
+                    fontSize: sh * .05,
                     fontWeight: FontWeight.w500),
               ),
               const SizedBox(
@@ -168,7 +169,8 @@ class _SignupPageState extends State<SignupPage> {
                             },
                             child: const Text(
                               'Sign up',
-                              style: TextStyle(fontSize: 23,color:Colors.white),
+                              style:
+                                  TextStyle(fontSize: 23, color: Colors.white),
                             )),
                       )
                     ],
@@ -181,6 +183,4 @@ class _SignupPageState extends State<SignupPage> {
       ),
     );
   }
-
- 
 }

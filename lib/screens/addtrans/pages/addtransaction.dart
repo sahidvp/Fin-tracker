@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -132,8 +130,8 @@ class _AddTransactionState extends State<AddTransaction> {
             box.put(widget.transaction!.key, widget.transaction!);
           } else {
             // Add new transaction
-            var add = Add_data(
-                selectedItemi!, aamount.text, date, description.text, selectedItem!);
+            var add = Add_data(selectedItemi!, aamount.text, date,
+                description.text, selectedItem!);
             box.add(add);
           }
           Navigator.of(context).pop();
@@ -162,10 +160,9 @@ class _AddTransactionState extends State<AddTransaction> {
   }
 
   bool validateFields() {
-  
     return selectedItem != null &&
         selectedItemi != null &&
-      //  description.text.isNotEmpty &&
+        //  description.text.isNotEmpty &&
         aamount.text.isNotEmpty;
   }
 
@@ -174,21 +171,28 @@ class _AddTransactionState extends State<AddTransaction> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Fields Required",style: TextStyle(color: mycolor),),
-          content: Text("Please fill in all the required fields.",style: TextStyle(color: mycolor),),
+          title: Text(
+            "Fields Required",
+            style: TextStyle(color: mycolor),
+          ),
+          content: Text(
+            "Please fill in all the required fields.",
+            style: TextStyle(color: mycolor),
+          ),
           actions: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                color: mycolor
-              ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: mycolor),
               child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text("OK",style: TextStyle(
-                  color: Colors.white,fontWeight: FontWeight.bold
-                ),),
+                child: const Text(
+                  "OK",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],
@@ -439,7 +443,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       ),
                     ),
                     const SizedBox(
-                      width: 80,
+                      width: 50,
                     ),
                     const Text(
                       'Add Transactions',

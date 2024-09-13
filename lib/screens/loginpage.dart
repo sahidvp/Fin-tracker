@@ -1,12 +1,9 @@
-
 import 'package:finance_tracker/screens/homepage.dart';
 import 'package:finance_tracker/screens/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../db/db.dart';
-
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   Color mycolor = const Color.fromARGB(255, 18, 54, 52);
   @override
   Widget build(BuildContext context) {
+    final sh = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -42,11 +40,11 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(children: [
-                  const Text(
+                  Text(
                     'Log in',
                     style: TextStyle(
                         color: Color.fromARGB(255, 18, 54, 52),
-                        fontSize: 50,
+                        fontSize: sh * .05,
                         fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
@@ -104,15 +102,10 @@ class _LoginPageState extends State<LoginPage> {
                                 MaterialStateProperty.all<Color>(mycolor)),
                         onPressed: () {
                           loginfunction();
-                            Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
-      );
                         },
                         child: const Text(
                           'login',
-                          style: TextStyle(fontSize: 23,color: Colors.white),
+                          style: TextStyle(fontSize: 23, color: Colors.white),
                         )),
                   ),
 
@@ -167,44 +160,46 @@ class _LoginPageState extends State<LoginPage> {
       )),
     );
   }
+
   loginfunction() async {
+    if (_formKey.currentState!.validate()) {
+      final email = _emailandnameController.text;
+      final password = _passwordController.text;
 
-  if (_formKey.currentState!.validate()) {
-    final email = _emailandnameController.text;
-    final password = _passwordController.text;
+      final signupBox = await Hive.openBox<User>('user');
+      final signupDetails = signupBox.get('user',
+          defaultValue: User(name: '', email: '', password: ''));
 
-    final signupBox = await Hive.openBox<User>('user');
-    final signupDetails = signupBox.get('user',
-        defaultValue: User(name: '', email: '', password: ''));
-
-    if (signupDetails != null &&
-        signupDetails.email == email &&
-        signupDetails.password == password) {
-      // Save the user's login status in shared preferences
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setBool('isLoggedIn', true);
-
-    
-
-     ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: mycolor ,
-          content:const Center(
-            child: Text('Welcome to FinTrack'),
+      if (signupDetails != null &&
+          signupDetails.email == email &&
+          signupDetails.password == password) {
+        // Save the user's login status in shared preferences
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setBool('isLoggedIn', true);
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
           ),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Invalid email or password'),
-        ),
-      );
+          (Route<dynamic> route) => false,
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: mycolor,
+            content: const Center(
+              child: Text('Welcome to FinTrack'),
+            ),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Invalid email or password'),
+          ),
+        );
+      }
     }
   }
-}
-
-  
 }
 
 class BottomOvalClipper extends CustomClipper<Path> {

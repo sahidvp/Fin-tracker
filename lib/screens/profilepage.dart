@@ -62,19 +62,19 @@ class ContainerStackExample extends StatelessWidget {
               Stack(
                 children: <Widget>[
                   Container(
-                    height: 290,
+                    height: 250,
                   ),
                   ClipPath(
                     clipper: BottomOvalClipper(),
                     child: Container(
                       width: double.infinity,
-                      height: 250,
+                      height: 200,
                       color: const Color.fromARGB(255, 18, 54, 52),
                     ),
                   ),
                   Positioned(
-                    left: 160,
-                    top: 180,
+                    left: 140,
+                    top: 130,
                     child: Container(
                       width: 100,
                       height: 100,
@@ -102,7 +102,7 @@ class ContainerStackExample extends StatelessWidget {
                   color: Color.fromARGB(255, 18, 54, 52),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               const Divider(),
               InkWell(
                 onTap: () {
@@ -210,12 +210,13 @@ class ContainerStackExample extends StatelessWidget {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setBool('isLoggedIn', false);
 
-                // Navigate to the login screen
                 // ignore: use_build_context_synchronously
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) {
-                  return const LoginPage();
-                }));
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                  (Route<dynamic> route) => false,
+                );
               },
             ),
           ],

@@ -12,7 +12,7 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   int currentindex = 0;
   // ignore: prefer_typing_uninitialized_variables
-  var _controller ;
+  var _controller;
 
   @override
   void initState() {
@@ -28,6 +28,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final sh = MediaQuery.of(context).size.height * .1;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(children: [
@@ -43,7 +44,7 @@ class _IntroScreenState extends State<IntroScreen> {
             itemBuilder: (context, i) {
               if (i == 2) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
                     children: [
                       Image.asset(
@@ -56,8 +57,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                       Text(
                         contents[i].title,
-                        style: const TextStyle(
-                          fontSize: 40,
+                        style: TextStyle(
+                          fontSize: sh * .3,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 18, 54, 52),
                         ),
@@ -67,7 +68,8 @@ class _IntroScreenState extends State<IntroScreen> {
                 );
               } else {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
                   child: Column(
                     children: [
                       Image.asset(
@@ -76,8 +78,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                       Text(
                         contents[i].title,
-                        style: const TextStyle(
-                            fontSize: 30,
+                        style: TextStyle(
+                            fontSize: sh * .3,
                             color: Color.fromARGB(255, 18, 54, 52),
                             fontWeight: FontWeight.bold),
                       ),
@@ -86,8 +88,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                       Text(
                         contents[i].description,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                         textAlign: TextAlign.center,
                       )
                     ],
