@@ -31,7 +31,7 @@ int expenses() {
   var history2 = box.values.toList();
   List a = [0, 0];
   for (var i = 0; i < history2.length; i++) {
-    a.add(history2[i].iN == 'Income' ? 0 : int.parse(history2[i].amount) );
+    a.add(history2[i].iN == 'Income' ? 0 : int.parse(history2[i].amount));
   }
   totals = a.reduce((value, element) => value + element);
   return totals;
@@ -40,7 +40,7 @@ int expenses() {
 List<Add_data> today() {
   List<Add_data> a = [];
   var history2 = box.values.toList();
-  DateTime date =  DateTime.now();
+  DateTime date = DateTime.now();
   for (var i = 0; i < history2.length; i++) {
     if (history2[i].datetime.day == date.day) {
       a.add(history2[i]);
@@ -52,11 +52,13 @@ List<Add_data> today() {
 List<Add_data> week() {
   List<Add_data> a = [];
   var history2 = box.values.toList();
-  DateTime date =  DateTime.now();
+  DateTime date = DateTime.now();
   for (var i = 0; i < history2.length; i++) {
-    if (date.day - 7 <= history2[i].datetime.day &&
-        history2[i].datetime.day <= date.day) {
-      a.add(history2[i]);
+    if (history2[i].datetime.month == date.month) {
+      if (date.day - 7 <= history2[i].datetime.day &&
+          history2[i].datetime.day <= date.day) {
+        a.add(history2[i]);
+      }
     }
   }
   return a;
@@ -65,7 +67,7 @@ List<Add_data> week() {
 List<Add_data> month() {
   List<Add_data> a = [];
   var history2 = box.values.toList();
-  DateTime date =  DateTime.now();
+  DateTime date = DateTime.now();
   for (var i = 0; i < history2.length; i++) {
     if (history2[i].datetime.month == date.month) {
       a.add(history2[i]);
@@ -77,7 +79,7 @@ List<Add_data> month() {
 List<Add_data> year() {
   List<Add_data> a = [];
   var history2 = box.values.toList();
-  DateTime date =  DateTime.now();
+  DateTime date = DateTime.now();
   for (var i = 0; i < history2.length; i++) {
     if (history2[i].datetime.year == date.year) {
       a.add(history2[i]);
@@ -96,7 +98,6 @@ int totalChart(List<Add_data> history2) {
   totals = a.reduce((value, element) => value + element);
   return totals;
 }
-
 
 List time(List<Add_data> history2, bool hour) {
   List<Add_data> a = [];
@@ -120,7 +121,6 @@ List time(List<Add_data> history2, bool hour) {
     a.clear();
     c = counter;
   }
-  
+
   return total;
 }
-

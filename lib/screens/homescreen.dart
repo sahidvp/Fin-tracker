@@ -261,13 +261,9 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
   }
 
   Widget getlist(Add_data history, int index) {
-    return Dismissible(
-        key: UniqueKey(),
-        onDismissed: (direction) {
-          history.delete();
-        },
-        child: get(index, history));
-  }
+  return get(index, history);
+}
+
 
   ListTile get(int index, Add_data history) {
     return ListTile(

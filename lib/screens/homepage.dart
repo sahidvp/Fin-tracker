@@ -1,6 +1,7 @@
 import 'package:finance_tracker/screens/addtrans/pages/addtransaction.dart';
 import 'package:finance_tracker/screens/graphicalpage.dart';
 import 'package:finance_tracker/screens/homescreen.dart';
+import 'package:finance_tracker/screens/pie_chart.dart';
 import 'package:finance_tracker/screens/profilepage.dart';
 import 'package:finance_tracker/screens/transactionpage.dart';
 import 'package:flutter/material.dart';
@@ -25,32 +26,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-     shape: const CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return const AddTransaction();
           }));
         },
         backgroundColor: mycolor,
-        child: const Icon(Icons.add,color: Colors.white,),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
-      floatingActionButtonLocation:
-      
-          FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _pages[_currentselectindex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+          backgroundColor: Colors.white,
           currentIndex: _currentselectindex,
           onTap: (newindex) {
             setState(() {
               _currentselectindex = newindex;
             });
           },
-       type: BottomNavigationBarType.fixed,
-
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: mycolor,
           unselectedItemColor: Colors.grey,
-           showUnselectedLabels: false,
+          showUnselectedLabels: false,
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(

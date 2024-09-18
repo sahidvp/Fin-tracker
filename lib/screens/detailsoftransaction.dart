@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -44,7 +42,10 @@ class DetailedTransaction extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: mycolor,
-          title: const Text('Transaction Details',style: TextStyle(color: Colors.white),),
+          title: const Text(
+            'Transaction Details',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         body: Stack(
           children: [
@@ -68,9 +69,9 @@ class DetailedTransaction extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Column(
-                    
                     children: [
                       Container(
                         height: 80,
@@ -119,7 +120,9 @@ class DetailedTransaction extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 35,),
+                      const SizedBox(
+                        height: 35,
+                      ),
                       const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -127,7 +130,10 @@ class DetailedTransaction extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
-                      ),const SizedBox(height:30 ,),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -149,7 +155,8 @@ class DetailedTransaction extends StatelessWidget {
                             ),
                           )
                         ],
-                      ),const SizedBox(height:20),
+                      ),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -160,7 +167,6 @@ class DetailedTransaction extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                                 color: Colors.grey),
                           ),
-                        
                           Text(
                             DateFormat('h:mm a').format(transaction.datetime),
                             style: const TextStyle(
@@ -170,7 +176,7 @@ class DetailedTransaction extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height:20),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -182,49 +188,74 @@ class DetailedTransaction extends StatelessWidget {
                                 color: Colors.grey),
                           ),
                           Text(
-                            "${months[transaction.datetime.month-1]} ${transaction.datetime.day}, ${transaction.datetime.year} ",
+                            "${months[transaction.datetime.month - 1]} ${transaction.datetime.day}, ${transaction.datetime.year} ",
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
-                      ),const SizedBox(height:30),
-                      Container(height: 2,
-                      color: Colors.grey,),
-                      const SizedBox(height: 10,),
+                      ),
+                      const SizedBox(height: 30),
+                      Container(
+                        height: 2,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children:[ Text(transaction.iN=="Income" ?"Earnings":"Spending",
-                      style: const TextStyle(
-                        fontSize: 18,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              transaction.iN == "Income"
+                                  ? "Earnings"
+                                  : "Spending",
+                              style: const TextStyle(
+                                fontSize: 18,
                                 fontWeight: FontWeight.w700,
-                                color:Colors.grey,
-                      ),),Text(
-                        "₹ ${transaction.amount}",style: const TextStyle(
-                           fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                        ),
-                      )]),const SizedBox(height: 50,), Container(height: 2,
-                      color: Colors.grey,),
-                      const SizedBox(height: 20,),
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "₹ ${transaction.amount}",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ]),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        height: 2,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Total",style: TextStyle(
-                             fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color:mycolor,
-                          ),),
-                           Text("₹ ${total()}",style: const TextStyle(
-                             fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color:Colors.black,
-                          ),)
-                  
+                          Text(
+                            "Total",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: mycolor,
+                            ),
+                          ),
+                          Text(
+                            "₹ ${total()}",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                            ),
+                          )
                         ],
-                      )
-                  
+                      ),
                     ],
                   ),
                 ),
