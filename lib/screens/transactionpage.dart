@@ -234,7 +234,7 @@ class _TransactionPageState extends State<TransactionPage> {
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20)),
                 subtitle: Text(
-                  ' ${day[transaction.datetime.weekday - 1]} , ${transaction.datetime.day} -${transaction.datetime.month}-${transaction.datetime.year} ',
+                  ' ${transaction.datetime.day} -${transaction.datetime.month}-${transaction.datetime.year} ',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 15),
                 ),

@@ -1,3 +1,4 @@
+import 'package:finance_tracker/screens/addtrans/pages/addtransaction.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:finance_tracker/db/add_date.dart';
@@ -27,7 +28,8 @@ class _GraphicalPageState extends State<GraphicalPage> {
         child: ValueListenableBuilder(
           valueListenable: kj,
           builder: (context, dynamic value, Widget? child) {
-            a = f[value]; // Get the current data for the selected day/week/month/year
+            a = f[
+                value]; // Get the current data for the selected day/week/month/year
             return custom();
           },
         ),
@@ -162,10 +164,32 @@ class _GraphicalPageState extends State<GraphicalPage> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
+              if (a.isEmpty) {
+                return Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 50),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: mycolor),
+                      onPressed: () {
+                        // Handle button press, for example:
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (ctx) => AddTransaction()));
+                      },
+                      child: const Text('Add transactions',
+                          style: TextStyle(fontSize: 15, color: Colors.white)),
+                    ),
+                  ),
+                );
+              }
+
+              // Render ListTile if the list is not empty
               return ListTile(
                 leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(13),
-                    child: Image.asset('asset/image/${a[index].name}.png')),
+                  borderRadius: BorderRadius.circular(13),
+                  child: Image.asset('asset/image/${a[index].name}.png'),
+                ),
                 title: Text(
                   a[index].name,
                   style: const TextStyle(
@@ -187,7 +211,7 @@ class _GraphicalPageState extends State<GraphicalPage> {
                 ),
               );
             },
-            childCount: a.length,
+            childCount: a.isEmpty ? 1 : a.length,
           ),
         )
       ],
