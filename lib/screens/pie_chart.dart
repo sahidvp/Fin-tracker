@@ -2,7 +2,6 @@ import 'package:finance_tracker/screens/addtrans/pages/addtransaction.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:finance_tracker/db/add_date.dart';
-import 'package:finance_tracker/data/chart.dart';
 import 'package:finance_tracker/data/utility.dart';
 
 class GraphicalPage extends StatefulWidget {
@@ -50,6 +49,12 @@ class _GraphicalPageState extends State<GraphicalPage> {
       }
     }
 
+    double total = totalIncome + totalExpense;
+
+    // Check to avoid division by zero
+    int incomePercentage = total > 0 ? (totalIncome * 100) ~/ total : 0;
+    int expensePercentage = total > 0 ? (totalExpense * 100) ~/ total : 0;
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -76,6 +81,7 @@ class _GraphicalPageState extends State<GraphicalPage> {
                     ...List.generate(4, (index) {
                       return GestureDetector(
                         onTap: () {
+                          // print(incomePercentage);
                           setState(() {
                             index_color = index;
                             kj.value = index;
@@ -117,7 +123,7 @@ class _GraphicalPageState extends State<GraphicalPage> {
                       PieChartSectionData(
                         value: totalIncome, // Total Income
                         color: Colors.green, // Green for income
-                        title: 'Income',
+                        title: '$incomePercentage %',
                         radius: 50,
                         titleStyle: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
@@ -125,7 +131,7 @@ class _GraphicalPageState extends State<GraphicalPage> {
                       PieChartSectionData(
                         value: totalExpense, // Total Expense
                         color: Colors.red, // Red for expense
-                        title: 'Expense',
+                        title: '$expensePercentage %',
                         radius: 50,
                         titleStyle: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
@@ -137,6 +143,33 @@ class _GraphicalPageState extends State<GraphicalPage> {
                   ),
                 ),
               ),
+              a.isNotEmpty
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 15,
+                          width: 15,
+                          color: Colors.green,
+                        ),
+                        Text("Income",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold)),
+                        Container(
+                          height: 15,
+                          width: 15,
+                          color: Colors.red,
+                        ),
+                        Text("Expense",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    )
+                  : SizedBox.shrink(),
               const SizedBox(
                 height: 20,
               ),
@@ -170,12 +203,18 @@ class _GraphicalPageState extends State<GraphicalPage> {
                     padding: EdgeInsets.symmetric(vertical: 50),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(backgroundColor: mycolor),
-                      onPressed: () {
+                      onPressed: () async {
                         // Handle button press, for example:
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (ctx) => AddTransaction()));
+                        final newTransaction = await Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (ctx) => AddTransaction()),
+                        );
+                        if (newTransaction != null) {
+                          setState(() {
+                            // Update the data source with the new transaction
+                            a.add(newTransaction);
+                          });
+                        }
                       },
                       child: const Text('Add transactions',
                           style: TextStyle(fontSize: 15, color: Colors.white)),

@@ -159,7 +159,8 @@ class _TransactionPageState extends State<TransactionPage> {
           scrollDirection: Axis.vertical,
           itemCount: filteredTransactions.length,
           itemBuilder: (context, index) {
-            final transaction = filteredTransactions[index];
+            final transaction =
+                filteredTransactions[filteredTransactions.length - index - 1];
             return Dismissible(
               key: UniqueKey(),
               background: Container(

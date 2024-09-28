@@ -49,7 +49,7 @@ class _SignupPageState extends State<SignupPage> {
               Text(
                 'Sign up',
                 style: TextStyle(
-                    color: Color.fromARGB(255, 18, 54, 52),
+                    color: const Color.fromARGB(255, 18, 54, 52),
                     fontSize: sh * .05,
                     fontWeight: FontWeight.w500),
               ),
@@ -147,14 +147,8 @@ class _SignupPageState extends State<SignupPage> {
                         width: double.infinity,
                         height: 40,
                         child: ElevatedButton(
-                            style: ButtonStyle(
-                                shape:
-                                    MaterialStateProperty.all<OutlinedBorder>(
-                                  const StadiumBorder(),
-                                ),
-                                elevation: const MaterialStatePropertyAll(30.0),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(mycolor)),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: mycolor),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 final username = _nameController.text;

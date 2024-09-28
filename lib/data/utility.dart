@@ -46,7 +46,7 @@ List<Add_data> today() {
       a.add(history2[i]);
     }
   }
-  return a;
+  return a.reversed.toList();
 }
 
 List<Add_data> week() {
@@ -61,7 +61,7 @@ List<Add_data> week() {
       }
     }
   }
-  return a;
+  return a.reversed.toList();
 }
 
 List<Add_data> month() {
@@ -73,7 +73,7 @@ List<Add_data> month() {
       a.add(history2[i]);
     }
   }
-  return a;
+  return a.reversed.toList();
 }
 
 List<Add_data> year() {
@@ -85,7 +85,7 @@ List<Add_data> year() {
       a.add(history2[i]);
     }
   }
-  return a;
+  return a.reversed.toList();
 }
 
 int totalChart(List<Add_data> history2) {

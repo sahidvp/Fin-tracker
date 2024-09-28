@@ -93,13 +93,8 @@ class _LoginPageState extends State<LoginPage> {
                     height: 40,
                     width: double.infinity,
                     child: ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<OutlinedBorder>(
-                              const StadiumBorder(),
-                            ),
-                            elevation: const MaterialStatePropertyAll(30.0),
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(mycolor)),
+                        style:
+                            ElevatedButton.styleFrom(backgroundColor: mycolor),
                         onPressed: () {
                           loginfunction();
                         },

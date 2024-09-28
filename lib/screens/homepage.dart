@@ -1,5 +1,4 @@
 import 'package:finance_tracker/screens/addtrans/pages/addtransaction.dart';
-import 'package:finance_tracker/screens/graphicalpage.dart';
 import 'package:finance_tracker/screens/homescreen.dart';
 import 'package:finance_tracker/screens/pie_chart.dart';
 import 'package:finance_tracker/screens/profilepage.dart';

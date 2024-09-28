@@ -1,3 +1,4 @@
+import 'package:finance_tracker/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -134,7 +135,8 @@ class _AddTransactionState extends State<AddTransaction> {
                 description.text, selectedItem!);
             box.add(add);
           }
-          Navigator.of(context).pop();
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctx) => const HomePage()));
         } else {
           // Show an alert as fields are not filled
           showAlertDialog(context);
@@ -162,7 +164,6 @@ class _AddTransactionState extends State<AddTransaction> {
   bool validateFields() {
     return selectedItem != null &&
         selectedItemi != null &&
-        //  description.text.isNotEmpty &&
         aamount.text.isNotEmpty;
   }
 
@@ -292,10 +293,12 @@ class _AddTransactionState extends State<AddTransaction> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextField(
+        maxLength: 7,
         keyboardType: TextInputType.number,
         focusNode: amountF,
         controller: aamount,
         decoration: InputDecoration(
+          counterText: "",
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: "Amount",

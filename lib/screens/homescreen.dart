@@ -249,7 +249,7 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    history = box.values.toList()[index];
+                    history = box.values.toList()[box.length - index - 1];
                     return getlist(history, index);
                   },
                   childCount: box.length,
@@ -261,9 +261,8 @@ class _ContainerStackExampleState extends State<ContainerStackExample> {
   }
 
   Widget getlist(Add_data history, int index) {
-  return get(index, history);
-}
-
+    return get(index, history);
+  }
 
   ListTile get(int index, Add_data history) {
     return ListTile(
